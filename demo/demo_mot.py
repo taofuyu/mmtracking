@@ -1,5 +1,6 @@
 import os
 import os.path as osp
+#import cv2
 import tempfile
 from argparse import ArgumentParser
 
@@ -63,11 +64,35 @@ def main():
 
     prog_bar = mmcv.ProgressBar(len(imgs))
     # test and show/save the images
+    #appeared_id = []
     for i, img in enumerate(imgs):
         if isinstance(img, str):
             img = osp.join(args.input, img)
         result = inference_mot(model, img, frame_id=i)
         result = result['track_results']
+        # car_result = result[3]
+        # for car in car_result:
+        #     video_path = args.input
+        #     sample_save_path = os.path.join("/data/taofuyu/tao_dataset/car_reid/high/", video_path.split("/")[-1].split(".")[0])
+        #     if not os.path.exists(sample_save_path):
+        #         os.makedirs(sample_save_path)
+            
+        #     car_id = str(int(car[0]))
+        #     car_box = car[1:-1]
+        #     x_min, y_min, x_max, y_max = map(int, list(car_box))
+        #     car_patch = img[y_min:y_max, x_min:x_max]
+        #     h,w,_ = car_patch.shape
+        #     if h <=0 or w<=0:
+        #         continue
+        #     if not car_id in appeared_id:
+        #         cv2.imwrite(os.path.join(sample_save_path, "id_"+car_id+".jpg"), car_patch)
+            
+        #     appeared_id.append(car_id)
+        #     track_save_path = os.path.join(sample_save_path, "id_"+car_id)
+        #     if not os.path.exists(track_save_path):
+        #         os.makedirs(track_save_path)
+        #     cv2.imwrite(track_save_path+ "/"+ str(i)+"_"+car_id+".jpg", car_patch)
+            
         if args.output is not None:
             if IN_VIDEO or OUT_VIDEO:
                 out_file = osp.join(out_path, f'{i:06d}.jpg')
