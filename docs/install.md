@@ -5,8 +5,16 @@
 - PyTorch 1.3+
 - CUDA 9.2+ (If you build PyTorch from source, CUDA 9.0 is also compatible)
 - GCC 5+
-- [MMCV](https://mmcv.readthedocs.io/en/latest/#installation) 1.2.4
-- [MMDetection](https://mmdetection.readthedocs.io/en/latest/#installation) 2.8.0
+- [MMCV](https://mmcv.readthedocs.io/en/latest/#installation)
+- [MMDetection](https://mmdetection.readthedocs.io/en/latest/#installation)
+
+The compatible MMTracking, MMCV, and MMDetection versions are as below. Please install the correct version to avoid installation issues.
+
+|  MMTracking version |       MMCV version       |      MMDetection version      |
+|:-------------------:|:------------------------:|:-----------------------------:|
+|        master       | mmcv-full>=1.3.8, <1.4.0 |       MMDetection>=2.14.0      |
+|        0.5.3        | mmcv-full>=1.3.8, <1.4.0 |       MMDetection>=2.14.0     |
+|        0.5.2        | mmcv-full>=1.3.3, <1.4.0 |       MMDetection=2.12.0      |
 
 ## Installation
 
@@ -32,7 +40,7 @@
     PyTorch 1.5, you need to install the prebuilt PyTorch with CUDA 10.1.
 
     ```shell
-    conda install pytorch cudatoolkit=10.1 torchvision -c pytorch
+    conda install pytorch==1.5 cudatoolkit=10.1 torchvision -c pytorch
     ```
 
     `E.g. 2` If you have CUDA 9.2 installed under `/usr/local/cuda` and would like to install
